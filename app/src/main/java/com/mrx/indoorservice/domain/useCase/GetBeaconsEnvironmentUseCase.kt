@@ -1,10 +1,16 @@
 package com.mrx.indoorservice.domain.useCase
 
+import android.content.Context
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
+import com.mrx.indoorservice.domain.externalInterface.BeaconManagerInterface
 import com.mrx.indoorservice.domain.model.BeaconsEnvironmentInfo
 
-class GetBeaconsEnvironmentUseCase {
+NOT_IMPLEMENT
 
-    fun execute() : ArrayList<BeaconsEnvironmentInfo> {
+class GetBeaconsEnvironmentUseCase(val beaconManager: BeaconManagerInterface) {
+
+    fun execute(context: Context, owner: LifecycleOwner, funObserver: Observer<Collection<BeaconsEnvironmentInfo>>) {
         // toDO
     }
 }
