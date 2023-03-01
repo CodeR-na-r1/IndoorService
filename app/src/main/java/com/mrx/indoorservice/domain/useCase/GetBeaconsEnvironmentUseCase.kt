@@ -2,9 +2,9 @@ package com.mrx.indoorservice.domain.useCase
 
 import com.mrx.indoorservice.domain.model.BeaconsEnvironmentInfo
 
-class GetDistancesUseCase {
+class GetBeaconsEnvironmentUseCase {
 
-    fun execute() : BeaconsEnvironmentInfo {
+    fun execute() : ArrayList<BeaconsEnvironmentInfo> {
         // toDO
     }
 }
