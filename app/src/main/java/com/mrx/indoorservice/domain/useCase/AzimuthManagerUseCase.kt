@@ -2,13 +2,15 @@ package com.mrx.indoorservice.domain.useCase
 
 import androidx.lifecycle.LiveData
 import com.mrx.indoorservice.domain.externalInterface.AzimuthManagerInterface
+import com.mrx.indoorservice.domain.model.AzimuthInfo
 
 class AzimuthManagerUseCase(private val azimuthManager: AzimuthManagerInterface) {
-    fun init() {
-        azimuthManager.init()
+
+    fun startListen() {
+        azimuthManager.startListen()
     }
 
-    fun getAzimuth() : Float? {
+    fun getAzimuth() : AzimuthInfo {
         return azimuthManager.getAzimuth()
     }
 
@@ -16,7 +18,7 @@ class AzimuthManagerUseCase(private val azimuthManager: AzimuthManagerInterface)
         return azimuthManager.getAzimuthViewModel()
     }
 
-    fun destroy() {
-        azimuthManager.destroy()
+    fun stopListen() {
+        azimuthManager.stopListen()
     }
 }

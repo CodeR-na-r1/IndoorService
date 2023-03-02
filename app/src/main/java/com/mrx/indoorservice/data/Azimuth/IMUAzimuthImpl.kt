@@ -7,24 +7,25 @@ import android.hardware.SensorManager
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.mrx.indoorservice.domain.externalInterface.AzimuthManagerInterface
+import com.mrx.indoorservice.domain.model.AzimuthInfo
 
 class IMUAzimuthImpl(private val sManager: SensorManager) : AzimuthManagerInterface, SensorEventListener {
 
     private val value: MutableLiveData<Float> by lazy { MutableLiveData<Float>() }
 
-    override fun init() {
+    override fun startListen() {
         sManager.registerListener(this, sManager.getDefaultSensor(Sensor.TYPE_ORIENTATION), SensorManager.SENSOR_DELAY_GAME)
     }
 
-    override fun getAzimuth() : Float? {
-        return this.value.value
+    override fun getAzimuth() : AzimuthInfo {
+        return AzimuthInfo(this.value.value)
     }
 
     override fun getAzimuthViewModel() : LiveData<Float> {
         return this.value
     }
 
-    override fun destroy() {
+    override fun stopListen() {
         sManager.unregisterListener(this)
     }
 
