@@ -7,9 +7,9 @@ interface BeaconManagerInterface {
 
     fun startRanging()
 
-    fun getRanging() : ArrayList<BeaconsEnvironmentInfo>
+    fun getRanging() : Collection<BeaconsEnvironmentInfo>
 
-    fun getRangingViewModel() : LiveData<ArrayList<BeaconsEnvironmentInfo>>
+    fun getRangingViewModel() : LiveData<Collection<BeaconsEnvironmentInfo>>
 
     fun stopRanging()
 }

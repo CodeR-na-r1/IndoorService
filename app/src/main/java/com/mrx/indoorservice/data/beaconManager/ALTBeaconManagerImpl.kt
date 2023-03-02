@@ -12,7 +12,7 @@ import org.altbeacon.beacon.Region
 
 class ALTBeaconManagerImpl(private val context: Context) : BeaconManagerInterface {
 
-    private val value : MutableLiveData<ArrayList<BeaconsEnvironmentInfo>> = MutableLiveData(arrayListOf<BeaconsEnvironmentInfo>())
+    private val value : MutableLiveData<Collection<BeaconsEnvironmentInfo>> = MutableLiveData(arrayListOf<BeaconsEnvironmentInfo>())
 
     private val beaconManager: BeaconManager = BeaconManager.getInstanceForApplication(context)
     private val region: Region = Region("all-beacons-region", null, null, null)
@@ -29,11 +29,11 @@ class ALTBeaconManagerImpl(private val context: Context) : BeaconManagerInterfac
         beaconManager.getRegionViewModel(region).rangedBeacons.observeForever(observer)
     }
 
-    override fun getRanging(): ArrayList<BeaconsEnvironmentInfo> {
+    override fun getRanging(): Collection<BeaconsEnvironmentInfo> {
         return this.value.value ?: ArrayList()
     }
 
-    override fun getRangingViewModel(): LiveData<ArrayList<BeaconsEnvironmentInfo>> {
+    override fun getRangingViewModel(): LiveData<Collection<BeaconsEnvironmentInfo>> {
         return this.value
     }
 
