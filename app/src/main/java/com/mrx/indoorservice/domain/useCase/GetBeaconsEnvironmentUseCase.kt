@@ -1,16 +1,24 @@
 package com.mrx.indoorservice.domain.useCase
 
-import android.content.Context
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.Observer
+import androidx.lifecycle.LiveData
 import com.mrx.indoorservice.domain.externalInterface.BeaconManagerInterface
 import com.mrx.indoorservice.domain.model.BeaconsEnvironmentInfo
 
-NOT_IMPLEMENT
+class GetBeaconsEnvironmentUseCase(private val beaconManager: BeaconManagerInterface) {
 
-class GetBeaconsEnvironmentUseCase(val beaconManager: BeaconManagerInterface) {
+    fun startRanging() {
+        beaconManager.startRanging()
+    }
 
-    fun execute(context: Context, owner: LifecycleOwner, funObserver: Observer<Collection<BeaconsEnvironmentInfo>>) {
-        // toDO
+    fun getRanging() : ArrayList<BeaconsEnvironmentInfo> {
+        return beaconManager.getRanging()
+    }
+
+    fun getRangingViewModel() : LiveData<ArrayList<BeaconsEnvironmentInfo>> {
+        return beaconManager.getRangingViewModel()
+    }
+
+    fun stopRanging() {
+        beaconManager.stopRanging()
     }
 }
