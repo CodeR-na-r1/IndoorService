@@ -33,6 +33,7 @@ android {
 }
 
 dependencies {
+    implementation 'org.altbeacon:android-beacon-library:2.19.5'    // https://altbeacon.github.io/android-beacon-library
 
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'

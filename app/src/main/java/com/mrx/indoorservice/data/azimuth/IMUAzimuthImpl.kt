@@ -1,4 +1,4 @@
-package com.mrx.indoorservice.data.Azimuth
+package com.mrx.indoorservice.data.azimuth
 
 import android.hardware.Sensor
 import android.hardware.SensorEvent
