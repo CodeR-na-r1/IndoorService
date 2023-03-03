@@ -1,20 +1,18 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
 }
 
 android {
-    namespace 'com.mrx.indoorservice'
-    compileSdk 33
+    namespace 'com.mrx.indoorservice.data'
+    compileSdk 32
 
     defaultConfig {
-        applicationId "com.mrx.indoorservice"
         minSdk 23
         targetSdk 32
-        versionCode 1
-        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -33,13 +31,14 @@ android {
 }
 
 dependencies {
-    implementation project(path: ':data')
     implementation project(path: ':domain')
+
+    implementation 'org.altbeacon:android-beacon-library:2.19.5'    // https://altbeacon.github.io/android-beacon-library
+    implementation 'com.lemmingapex.trilateration:trilateration:1.0.2'
 
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.8.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'

@@ -10,7 +10,8 @@ import com.mrx.indoorservice.domain.model.PositionInfo
 import com.mrx.indoorservice.domain.model.StateEnvironment
 import org.apache.commons.math3.fitting.leastsquares.LevenbergMarquardtOptimizer
 
-class TrilaterationPositionManagerImpl(private var stateEnvironment: Collection<StateEnvironment>? = null) : PositionManagerInterface {
+class TrilaterationPositionManagerImpl(private var stateEnvironment: Collection<StateEnvironment>? = null) :
+    PositionManagerInterface {
 
     override fun setEnvironment(stateEnvironment: Collection<StateEnvironment>) {
         this.stateEnvironment = stateEnvironment

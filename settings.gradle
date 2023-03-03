@@ -14,3 +14,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "IndoorService"
 include ':app'
+include ':data'
+include ':domain'
