@@ -1,4 +1,4 @@
-package com.mrx.indoorservice.data.positionManager
+package com.mrx.indoorservice.data.positionManager.models
 
 import com.mrx.indoorservice.domain.model.Point
 

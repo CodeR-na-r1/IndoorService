@@ -2,6 +2,7 @@ package com.mrx.indoorservice.data.positionManager
 
 import com.lemmingapex.trilateration.NonLinearLeastSquaresSolver
 import com.lemmingapex.trilateration.TrilaterationFunction
+import com.mrx.indoorservice.data.positionManager.models.EnvironmentMetrics
 import com.mrx.indoorservice.domain.externalInterface.PositionManagerInterface
 import com.mrx.indoorservice.domain.model.EnvironmentInfo
 import com.mrx.indoorservice.domain.model.Point
