@@ -1,3 +1,3 @@
 package com.mrx.indoorservice.domain.model
 
-data class StateEnvironment(private val id: String, private val position: Point<Double>)
+data class StateEnvironment(val id: String, val position: Point<Double>)

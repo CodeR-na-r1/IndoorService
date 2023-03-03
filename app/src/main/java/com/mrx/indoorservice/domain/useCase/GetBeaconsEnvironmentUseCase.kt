@@ -10,11 +10,11 @@ class GetBeaconsEnvironmentUseCase(private val beaconManager: BeaconManagerInter
         beaconManager.startRanging()
     }
 
-    fun getRanging() : ArrayList<BeaconsEnvironmentInfo> {
+    fun getRanging() : Collection<BeaconsEnvironmentInfo> {
         return beaconManager.getRanging()
     }
 
-    fun getRangingViewModel() : LiveData<ArrayList<BeaconsEnvironmentInfo>> {
+    fun getRangingViewModel() : LiveData<Collection<BeaconsEnvironmentInfo>> {
         return beaconManager.getRangingViewModel()
     }
 
