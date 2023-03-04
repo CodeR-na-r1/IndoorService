@@ -5,11 +5,10 @@ import android.os.Bundle
 import android.widget.TextView
 import com.mrx.indoorservice.R
 import com.mrx.indoorservice.api.IndoorService
-import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
 
-    val indoorService: IndoorService by inject()
+    val indoorService by lazy { IndoorService.getInstance(context = applicationContext) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

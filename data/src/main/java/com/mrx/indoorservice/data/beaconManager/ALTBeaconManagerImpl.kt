@@ -9,6 +9,7 @@ import com.mrx.indoorservice.domain.model.BeaconsEnvironmentInfo
 import org.altbeacon.beacon.Beacon
 import org.altbeacon.beacon.BeaconManager
 import org.altbeacon.beacon.Region
+import org.altbeacon.beacon.service.RunningAverageRssiFilter
 
 class ALTBeaconManagerImpl(private val context: Context) : BeaconManagerInterface {
 
@@ -22,6 +23,11 @@ class ALTBeaconManagerImpl(private val context: Context) : BeaconManagerInterfac
             temp.add(BeaconsEnvironmentInfo(beacon.bluetoothAddress, beacon.distance))
         }
         this.value.value = temp
+    }
+
+    init {
+        BeaconManager.setRssiFilterImplClass(RunningAverageRssiFilter::class.java)
+        RunningAverageRssiFilter.setSampleExpirationMilliseconds(5000L)
     }
 
     override fun startRanging() {

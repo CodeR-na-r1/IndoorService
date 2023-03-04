@@ -18,6 +18,10 @@ class TrilaterationPositionManagerImpl(private var stateEnvironment: Collection<
     }
 
     override fun getPosition(environmentInfo: Collection<EnvironmentInfo>): PositionInfo {
+        if (this.stateEnvironment == null) {
+            throw NullPointerException("You should initialize the class property using the setEnvironment method!")
+        }
+
         val environmentMetrics = this.mapEnvironmentInfoToEnvironmentMetrics(environmentInfo)
 
         val positions = preparePositions(environmentMetrics = environmentMetrics)
