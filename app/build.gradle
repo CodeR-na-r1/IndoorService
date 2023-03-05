@@ -1,5 +1,5 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
 }
 
@@ -8,7 +8,7 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.mrx.indoorservice"
+        //applicationId "com.mrx.indoorservice"
         minSdk 23
         targetSdk 32
         versionCode 1
