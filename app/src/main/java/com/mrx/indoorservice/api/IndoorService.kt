@@ -9,6 +9,7 @@ import com.mrx.indoorservice.data.positionManager.TrilaterationPositionManagerIm
 import com.mrx.indoorservice.domain.useCase.AzimuthManagerUseCase
 import com.mrx.indoorservice.domain.useCase.GetBeaconsEnvironmentUseCase
 import com.mrx.indoorservice.domain.useCase.GetPositionUseCase
+import com.mrx.indoorservice.domain.useCase.MapperUseCase
 
 object IndoorService
 {
@@ -17,6 +18,7 @@ object IndoorService
     lateinit var AzimuthManager: AzimuthManagerUseCase
     lateinit var BeaconsEnvironment: GetBeaconsEnvironmentUseCase
     val Position: GetPositionUseCase by lazy { GetPositionUseCase(TrilaterationPositionManagerImpl()) }
+    val Mapper: MapperUseCase by lazy { MapperUseCase() }
 
     fun getInstance(context: Context): IndoorService {
         if (!init) {
