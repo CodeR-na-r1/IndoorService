@@ -8,6 +8,7 @@ import com.mrx.indoorservice.domain.externalInterface.BeaconManagerInterface
 import com.mrx.indoorservice.domain.model.BeaconsEnvironmentInfo
 import org.altbeacon.beacon.Beacon
 import org.altbeacon.beacon.BeaconManager
+import org.altbeacon.beacon.BeaconParser
 import org.altbeacon.beacon.Region
 import org.altbeacon.beacon.service.RunningAverageRssiFilter
 
@@ -28,6 +29,8 @@ class ALTBeaconManagerImpl(private val context: Context) : BeaconManagerInterfac
     init {
         BeaconManager.setRssiFilterImplClass(RunningAverageRssiFilter::class.java)
         RunningAverageRssiFilter.setSampleExpirationMilliseconds(5000L)
+        beaconManager.beaconParsers.clear()
+        beaconManager.beaconParsers.add(BeaconParser().setBeaconLayout("m:2-3=0215,i:4-19,i:20-21,i:22-23,p:24-24"))
     }
 
     override fun startRanging() {
