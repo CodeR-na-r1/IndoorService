@@ -13,7 +13,7 @@ import com.mrx.indoorservice.domain.useCase.MapperUseCase
 
 object IndoorService
 {
-    var init: Boolean = false
+    private var init: Boolean = false
 
     lateinit var AzimuthManager: AzimuthManagerUseCase
     lateinit var BeaconsEnvironment: GetBeaconsEnvironmentUseCase
