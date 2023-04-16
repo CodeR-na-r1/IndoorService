@@ -11,6 +11,8 @@ import com.mrx.indoorservice.domain.useCase.GetBluetoothBeaconsEnvironmentUseCas
 import com.mrx.indoorservice.domain.useCase.GetPositionUseCase
 import com.mrx.indoorservice.domain.useCase.MapperUseCase
 
+REFACTOR
+
 object IndoorService
 {
     private var init: Boolean = false

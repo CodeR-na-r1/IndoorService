@@ -18,9 +18,19 @@ interface WiFiBeaconManagerInterface {
 
     /* methods for scanning specific wifi points */
 
-    fun setSSIDForSpecificScan(ssid: String)    // config
+    fun setSSIDFilterForSpecificScan(ssid: String)    // config
 
-    fun setSSIDForSpecificScan(ssid: Collection<String>)    // config
+    fun setSSIDFilterForSpecificScan(ssid: Collection<String>)    // config
+
+    fun setMaskFilterForSpecificScan(maskSSID: String)  // config
+
+    fun deleteSSIDFilterForSpecificScan(ssid: String)   // config
+
+    fun deleteSSIDFilterForSpecificScan(ssid: Collection<String>)   // config
+
+    fun deleteMaskFilterForSpecificScan()  // config
+
+    fun clearSSIDFilter()   // config
 
     fun startSpecificScanning()
 
