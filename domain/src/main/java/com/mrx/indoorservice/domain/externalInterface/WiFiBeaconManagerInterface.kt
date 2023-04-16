@@ -1,26 +1,29 @@
 package com.mrx.indoorservice.domain.externalInterface
 
+import androidx.lifecycle.LiveData
+import com.mrx.indoorservice.domain.model.WiFiBeaconsEnvironmentInfo
+
 interface WiFiBeaconManagerInterface {
 
     /* methods for config */
 
-    fun setScanInterval()   // config
+    fun setScanInterval(intervalValueMilliseconds: Long)   // config
 
     /* methods for scanning all wifi points */
 
     fun startAllScanning()
 
-    fun getAllScanLastResult()
+    fun getAllScanLastResult() : Collection<WiFiBeaconsEnvironmentInfo>
 
-    fun getAllScanViewModel()
+    fun getAllScanViewModel() : LiveData<Collection<WiFiBeaconsEnvironmentInfo>>
 
     fun stopAllScanning()
 
     /* methods for scanning specific wifi points */
 
-    fun setSSIDFilterForSpecificScan(ssid: String)    // config
+    fun addSSIDFilterForSpecificScan(ssid: String)    // config
 
-    fun setSSIDFilterForSpecificScan(ssid: Collection<String>)    // config
+    fun addSSIDFilterForSpecificScan(ssid: Collection<String>)    // config
 
     fun setMaskFilterForSpecificScan(maskSSID: String)  // config
 
@@ -28,15 +31,15 @@ interface WiFiBeaconManagerInterface {
 
     fun deleteSSIDFilterForSpecificScan(ssid: Collection<String>)   // config
 
-    fun deleteMaskFilterForSpecificScan()  // config
+    fun clearMaskFilterForSpecificScan()  // config
 
     fun clearSSIDFilter()   // config
 
     fun startSpecificScanning()
 
-    fun getSpecificScanLastResult()
+    fun getSpecificScanLastResult() : Collection<WiFiBeaconsEnvironmentInfo>
 
-    fun getSpecificScanViewModel()
+    fun getSpecificScanViewModel() : LiveData<Collection<WiFiBeaconsEnvironmentInfo>>
 
     fun stopSpecificScanning()
 }

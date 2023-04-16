@@ -32,6 +32,8 @@ class WiFiScanService() : Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         // observing on input livedata for config service on runtime
 
+        handler.postDelayed(checkWiFiScheduler, TIME_UPDATE.value!!)
+
         return START_STICKY
     }
 
