@@ -6,28 +6,31 @@ import androidx.core.content.ContextCompat.getSystemService
 import com.mrx.indoorservice.data.azimuth.IMUAzimuthImpl
 import com.mrx.indoorservice.data.bluetoothBeaconManager.ALTBluetoothBeaconManagerImpl
 import com.mrx.indoorservice.data.positionManager.TrilaterationPositionManagerImpl
-import com.mrx.indoorservice.domain.useCase.AzimuthManagerUseCase
-import com.mrx.indoorservice.domain.useCase.GetBluetoothBeaconsEnvironmentUseCase
-import com.mrx.indoorservice.domain.useCase.GetPositionUseCase
-import com.mrx.indoorservice.domain.useCase.MapperUseCase
+import com.mrx.indoorservice.data.wifiBeaconManager.WiFiBeaconManagerImpl
+import com.mrx.indoorservice.domain.useCase.*
 
-REFACTOR
-
-object IndoorService
+class IndoorService private constructor(context: Context)
 {
-    private var init: Boolean = false
-
     lateinit var AzimuthManager: AzimuthManagerUseCase
-    lateinit var BeaconsEnvironment: GetBluetoothBeaconsEnvironmentUseCase
+    lateinit var BluetoothBeaconsEnvironment: GetBluetoothBeaconsEnvironmentUseCase
+    lateinit var WiFiBeaconsEnvironment: GetWiFiBeaconsEnvironmentUseCase
     val Position: GetPositionUseCase by lazy { GetPositionUseCase(TrilaterationPositionManagerImpl()) }
     val Mapper: MapperUseCase by lazy { MapperUseCase() }
 
-    fun getInstance(context: Context): IndoorService {
-        if (!init) {
-            this.AzimuthManager = AzimuthManagerUseCase(IMUAzimuthImpl(getSystemService(context, SensorManager::class.java) as SensorManager))
-            this.BeaconsEnvironment = GetBluetoothBeaconsEnvironmentUseCase(ALTBluetoothBeaconManagerImpl(context))
-            this.init = true
+    companion object {
+
+        private var instance: IndoorService? = null
+
+        fun getInstance(context: Context): IndoorService {
+                return instance ?: synchronized(this) {
+                    IndoorService(context).also {
+                        it.AzimuthManager = AzimuthManagerUseCase(IMUAzimuthImpl(getSystemService(context, SensorManager::class.java) as SensorManager))
+                        it.BluetoothBeaconsEnvironment = GetBluetoothBeaconsEnvironmentUseCase(ALTBluetoothBeaconManagerImpl(context = context))
+                        it.WiFiBeaconsEnvironment = GetWiFiBeaconsEnvironmentUseCase(WiFiBeaconManagerImpl(context = context))
+
+                        instance = it
+                    }
+                }
         }
-        return this
     }
 }
