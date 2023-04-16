@@ -50,7 +50,7 @@ class WiFiBeaconManagerImpl(private val context: Context): WiFiBeaconManagerInte
             }
         }
 
-        // save data
+        // mapping and save data
 
         wifiFilteredData.value = res.map { WiFiBeaconsEnvironmentInfo(it.BSSID, it.level) }
     }
