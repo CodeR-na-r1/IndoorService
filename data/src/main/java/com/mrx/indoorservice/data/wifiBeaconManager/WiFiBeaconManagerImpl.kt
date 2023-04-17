@@ -28,21 +28,21 @@ class WiFiBeaconManagerImpl(private val context: Context): WiFiBeaconManagerInte
 
         // copy raw data
 
-        val res = it.toList()
+        var res = it.toList()
 
         // process data by mask
 
         if (mask != "") {
-            res.filter { it.BSSID.contains(mask) }
+            res = res.filter { it.SSID.contains(mask) }
         }
 
         // process data by filters
 
         if (filters.size > 0) {
-            res.filter { WiFiData ->
+            res = res.filter { WiFiData ->
                 var isHit = false
                 filters.forEach { filter ->
-                    if (WiFiData.SSID.contains(filter)) {
+                    if (WiFiData.SSID == filter) {
                         isHit = true
                     }
                 }
@@ -52,7 +52,7 @@ class WiFiBeaconManagerImpl(private val context: Context): WiFiBeaconManagerInte
 
         // mapping and save data
 
-        wifiFilteredData.value = res.map { WiFiBeaconsEnvironmentInfo(it.BSSID, it.level) }
+        wifiFilteredData.value = res.map { WiFiBeaconsEnvironmentInfo(it.SSID, it.level) }
     }
 
     override fun setScanInterval(intervalValueMilliseconds: Long) {
